@@ -11,15 +11,20 @@ public class Main {
 
         SantaClaus santaClaus = SantaClaus.getInstance();
 
-        MagicBoard magicBoard = new MagicBoard();
+        santaClaus.sayNeedDoll();
+//        santaClaus.sayNeedBike();
 
-        Command needDollCommand = new NeedDollCommand(magicBoard);
-        Command needBikeCommand = new NeedBikeCommand(magicBoard);
 
-        MagicBoardController magicBoardController = new MagicBoardController();
 
-        magicBoardController.setCommand(needDollCommand);
-        magicBoardController.writeToMagicBoard();
+//        MagicBoard magicBoard = new MagicBoard();
+//
+//        Command needDollCommand = new NeedDollCommand(magicBoard);
+//        Command needBikeCommand = new NeedBikeCommand(magicBoard);
+//
+//        MagicBoardController magicBoardController = new MagicBoardController();
+//
+//        magicBoardController.setCommand(needDollCommand);
+//        magicBoardController.writeToMagicBoard();
 
 
 

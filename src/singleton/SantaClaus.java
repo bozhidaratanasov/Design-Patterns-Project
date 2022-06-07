@@ -1,5 +1,8 @@
 package singleton;
 
+import abstractfactory.AbstractFactory;
+import abstractfactory.FactoryProducer;
+import abstractfactory.Toy;
 import command.Command;
 import command.MagicBoardController;
 import command.NeedBikeCommand;
@@ -14,6 +17,9 @@ public class SantaClaus {
 
     private MagicBoard magicBoard;
     private MagicBoardController magicBoardController;
+    Command command;
+    Observer dwarf;
+    AbstractFactory toyFactory;
 
 
     private SantaClaus() {
@@ -31,15 +37,18 @@ public class SantaClaus {
         magicBoard = new MagicBoard();
         magicBoardController = new MagicBoardController();
 
-        Command needDollCommand = new NeedDollCommand(magicBoard);
+        command = new NeedDollCommand(magicBoard);
 
 
-        Observer dwarf = new Dwarf("Goshko");
+        dwarf = new Dwarf("Goshko");
         magicBoard.subscribe(dwarf);
 
-        magicBoardController.setCommand(needDollCommand);
+        magicBoardController.setCommand(command);
         magicBoardController.writeToMagicBoard();
 
+        toyFactory = FactoryProducer.getFactory("Toy");
+        Toy doll = toyFactory.getToy("Doll");
+        doll.bring();
 
     }
 
@@ -47,10 +56,17 @@ public class SantaClaus {
         magicBoard = new MagicBoard();
         magicBoardController = new MagicBoardController();
 
-        Command needBikeCommand = new NeedBikeCommand(magicBoard);
+        command = new NeedBikeCommand(magicBoard);
 
-        magicBoardController.setCommand(needBikeCommand);
+        dwarf = new Dwarf("Goshko");
+        magicBoard.subscribe(dwarf);
+
+        magicBoardController.setCommand(command);
         magicBoardController.writeToMagicBoard();
+
+        toyFactory = FactoryProducer.getFactory("Toy");
+        Toy bike = toyFactory.getToy("Bike");
+        bike.bring();
 
     }
 

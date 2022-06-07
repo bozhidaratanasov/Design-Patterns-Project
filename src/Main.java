@@ -1,9 +1,27 @@
+import command.Command;
+import command.MagicBoardController;
+import command.NeedBikeCommand;
+import command.NeedDollCommand;
+import observer.MagicBoard;
 import singleton.SantaClaus;
 
 public class Main {
     public static void main(String[] args) {
 
-        System.out.println(SantaClaus.getInstance());
-        
+
+        SantaClaus santaClaus = SantaClaus.getInstance();
+
+        MagicBoard magicBoard = new MagicBoard();
+
+        Command needDollCommand = new NeedDollCommand(magicBoard);
+        Command needBikeCommand = new NeedBikeCommand(magicBoard);
+
+        MagicBoardController magicBoardController = new MagicBoardController();
+
+        magicBoardController.setCommand(needDollCommand);
+        magicBoardController.writeToMagicBoard();
+
+
+
     }
 }
